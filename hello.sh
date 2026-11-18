@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 
-services=("$@")
-
-if ((${#services[@]} == 0)); then
-  echo "Usage: bash hello.sh SERVICE [SERVICE...]" >&2
+if (($# < 2)); then
+  echo "Usage: bash hello.sh NAME SERVICE [SERVICE...]" >&2
   exit 2
 fi
 
 if [[ "${1:-}" == "--help" ]]; then
-	echo "Usage: bash hello.sh SERVICE [SERVICE...]"
+	echo "Usage: bash hello.sh NAME SERVICE [SERVICE...]"
 	exit 0
 fi
-name=mamazi
+name="$1"
+shift
+services=("$@")
 echo "salam, $name"
+
 check_service() {
   local service="$1"
   local status
