@@ -9,6 +9,7 @@ if [[ "${1:-}" == "--help" ]]; then
 	echo "Usage: bash hello.sh NAME SERVICE [SERVICE...]"
 	exit 0
 fi
+
 name="$1"
 shift
 services=("$@")
